@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Azul del fondo de logo.jpg: solo asoma en las esquinas que deje la mascara. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="270"
+        android:startColor="#122857"
+        android:endColor="#091140"
+        android:type="linear" />
+</shape>

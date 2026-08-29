@@ -1,0 +1,10 @@
+*.iml
+.gradle/
+local.properties
+.idea/
+build/
+.kotlin/
+
+# Firma del APK: nunca subir
+*.jks
+keystore.properties

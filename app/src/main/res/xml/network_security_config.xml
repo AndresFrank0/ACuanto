@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  bcv.org.ve sirve un intermedio equivocado en su cadena TLS, asi que Android no
+  logra construir el camino hasta una raiz del sistema (CertPathValidatorException).
+  Se incluye el intermedio correcto, "Sectigo Public Server Authentication CA DV R36",
+  descargado del AIA del propio certificado del BCV y verificado con
+  `openssl verify -partial_chain`, como ancla SOLO para este dominio.
+
+  La validacion sigue completa: firma, host y vigencia se comprueban igual. No hay
+  TrustManager permisivo ni se desactiva nada. El resto de dominios usa el sistema.
+  El intermedio vence en marzo de 2036; si Sectigo lo rota antes, el panel del BCV
+  deja de cargar (sin afectar la calculadora) y hay que reemplazar este .pem.
+-->
+<network-security-config>
+    <domain-config>
+        <domain includeSubdomains="true">bcv.org.ve</domain>
+        <trust-anchors>
+            <certificates src="@raw/bcv_ca" />
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
